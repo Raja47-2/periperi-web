@@ -19,8 +19,27 @@ from .scanner import ScanError, ScanOptions, scan_project, scan_upload
 from .storage import get_scan, initialize, list_scans, save_scan
 
 
-ROOT = Path(__file__).resolve().parents[2]
-SAMPLE_PROJECT = ROOT / "samples" / "demo-project"
+BACKEND_DIR = Path(__file__).resolve().parents[1]
+ROOT = BACKEND_DIR.parent
+
+
+def _resolve_sample_project() -> Path:
+    """Locate the bundled demo project across repo, container and VPS layouts."""
+    override = os.environ.get("ECDAT_SAMPLE_PROJECT", "").strip()
+    candidates = [Path(override)] if override else []
+    candidates += [
+        ROOT / "samples" / "demo-project",
+        BACKEND_DIR / "samples" / "demo-project",
+        BACKEND_DIR / "app" / "samples" / "demo-project",
+        Path.cwd() / "samples" / "demo-project",
+    ]
+    for candidate in candidates:
+        if candidate.is_dir():
+            return candidate
+    return candidates[0]
+
+
+SAMPLE_PROJECT = _resolve_sample_project()
 
 
 @asynccontextmanager
@@ -41,6 +60,7 @@ app.add_middleware(
             if origin.strip()
         ],
     ],
+    allow_origin_regex=r"^https://([a-z0-9-]+\.)*periperi\.pages\.dev$",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -72,7 +92,12 @@ async def scan_error_handler(_, exc: ScanError):
 
 @app.get("/api/health")
 def health() -> dict:
-    return {"status": "ok", "service": "ecdat", "engines": {"openssl": openssl_details(), **container_tool_details()}}
+    return {
+        "status": "ok",
+        "service": "ecdat",
+        "sample_project": {"path": str(SAMPLE_PROJECT), "available": SAMPLE_PROJECT.is_dir()},
+        "engines": {"openssl": openssl_details(), **container_tool_details()},
+    }
 
 
 @app.get("/api/scans")
@@ -99,6 +124,12 @@ def create_sample_scan(
     migration_complexity: str = "standard_application",
     threat_timeline: int = 15,
 ) -> dict:
+    if not SAMPLE_PROJECT.is_dir():
+        raise HTTPException(
+            503,
+            "The bundled demo project is not available on this host. "
+            "Set ECDAT_SAMPLE_PROJECT to its directory, or upload a ZIP instead.",
+        )
     return _complete_scan(scan_project(SAMPLE_PROJECT, _options(sensitivity, migration_complexity, threat_timeline)))
 
 
