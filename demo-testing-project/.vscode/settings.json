@@ -1,0 +1,7 @@
+{
+  "ecdat.scanOnSave": true,
+  "ecdat.dataSensitivity": "pii",
+  "ecdat.migrationComplexity": "standard_application",
+  "ecdat.threatTimeline": 15,
+  "ecdat.maxWorkspaceFiles": 500
+}

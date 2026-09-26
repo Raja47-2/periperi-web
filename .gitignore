@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+backend/ecdat.db
+frontend/node_modules/
+frontend/dist/
+vscode-extension/node_modules/
+vscode-extension/out/
+vscode-extension/engine/
+documentation/.qa-render*/
+.runtime/
+.DS_Store
