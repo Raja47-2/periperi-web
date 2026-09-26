@@ -12,9 +12,18 @@ in production.**
 | `src/payment_service.java` | RSA-1024, DES, Bouncy Castle, PKCS#11 / HSM |
 | `src/hsm_client.go` | PKCS#11 / HSM, ECDSA, SHA-256 |
 | `src/frontend_crypto.js` | SHA-1, AES-128-ECB, Node crypto, Web Crypto API |
+| `src/session_store.py` | Python cryptography, AES-256-GCM, AES-GCM, SHA-256, hard-coded key (value redacted) |
+| `src/legacy_vault.go` | Diffie-Hellman, ECDH, ECC, SHA-512 |
+| `src/soap_bridge.cs` | DSA, SHA-384, RSA-1024 |
+| `src/sodium_session.ts` | libsodium, ChaCha20, Node crypto, SHA-256 |
 | `certs/server.crt` | X.509 certificate plus its RSA-2048 public key |
 | `certs/server.key` | RSA-2048 private key (OpenSSL-validated, material redacted) |
 | `config/app.conf` | OpenSSL, Diffie-Hellman, ChaCha20 |
+| `requirements.txt` | PyCryptodome dependency pin |
+| `Dockerfile` | OpenSSL, SHA-1 |
 
 The pair in `certs/` is a real, self-signed 2048-bit RSA key pair generated purely for
 this demo. It protects nothing and must never be reused.
+
+This README is scanned as well, so every primitive named in the table above also shows
+up as a finding against `README.md`. That is expected, not a detection bug.
