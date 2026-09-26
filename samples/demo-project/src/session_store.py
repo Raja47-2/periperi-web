@@ -1,4 +1,4 @@
-"""Deliberately weak cryptography for the ECDAT demo. Never use in production."""
+"""Deliberately weak cryptography for the Periperi demo. Never use in production."""
 
 import hashlib
 

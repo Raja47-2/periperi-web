@@ -1,4 +1,4 @@
-"""Safe project traversal and ZIP extraction for ECDAT scans."""
+"""Safe project traversal and ZIP extraction for Periperi scans."""
 
 from __future__ import annotations
 
@@ -145,7 +145,7 @@ def _expand_container_layers(root: Path) -> int:
     layers = [path for path in root.rglob("*.tar") if path.is_file()][:100]
     expanded = 0
     for index, layer in enumerate(layers, start=1):
-        destination = root / "ecdat_layers" / f"layer-{index:03d}"
+        destination = root / "periperi_layers" / f"layer-{index:03d}"
         try:
             with tarfile.open(layer, "r:*") as bundle:
                 _safe_extract_tar(bundle, destination)
@@ -158,7 +158,7 @@ def _expand_container_layers(root: Path) -> int:
 def scan_zip(upload: bytes, filename: str, options: ScanOptions) -> dict[str, Any]:
     if len(upload) > MAX_UPLOAD_SIZE:
         raise ScanError("ZIP upload exceeds the 100 MB limit.")
-    temp_dir = Path(tempfile.mkdtemp(prefix="ecdat-"))
+    temp_dir = Path(tempfile.mkdtemp(prefix="periperi-"))
     archive = temp_dir / "project.zip"
     extracted = temp_dir / "project"
     try:
@@ -192,7 +192,7 @@ def scan_upload(upload: bytes, filename: str, options: ScanOptions) -> dict[str,
     if lower_name.endswith(".zip"):
         return scan_zip(upload, filename, options)
 
-    temp_dir = Path(tempfile.mkdtemp(prefix="ecdat-upload-"))
+    temp_dir = Path(tempfile.mkdtemp(prefix="periperi-upload-"))
     extracted = temp_dir / "content"
     source = temp_dir / Path(filename).name
     try:

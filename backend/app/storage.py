@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Any
 
 
-DB_PATH = Path(__file__).resolve().parents[1] / "ecdat.db"
+DB_PATH = Path(__file__).resolve().parents[1] / "periperi.db"
 
 
 def _connect() -> sqlite3.Connection:

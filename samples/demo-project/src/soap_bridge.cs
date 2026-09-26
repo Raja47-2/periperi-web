@@ -1,4 +1,4 @@
-// Deliberately weak sample for the ECDAT demo. Never use in production.
+// Deliberately weak sample for the Periperi demo. Never use in production.
 
 using System;
 using System.Security.Cryptography;

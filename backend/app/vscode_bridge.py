@@ -55,7 +55,7 @@ def main() -> None:
             finding["id"] = f"VSC-{index:04d}"
         json.dump({"findings": findings, "input_type": "source-file"}, sys.stdout)
     except Exception as exc:
-        json.dump({"error": f"ECDAT scan failed: {exc}"}, sys.stdout)
+        json.dump({"error": f"Periperi scan failed: {exc}"}, sys.stdout)
         raise SystemExit(1)
 
 

@@ -1,6 +1,6 @@
-# ECDAT
+# Periperi
 
-ECDAT is an Enterprise Cryptographic Discovery and Assessment Tool for SIH26164. It scans source repositories, binaries, container-image archives and cryptographic artifacts to find algorithms, keys, certificates, libraries and HSM references. It assesses classical and quantum risk, recommends safer or post-quantum alternatives, and exports a JSON CBOM.
+Periperi is a platform for Enterprise Risk, Intelligence, Protection, Evaluation, Research & Identification (PS SIH26164, SIH 2026). It scans source repositories, binaries, container-image archives and cryptographic artifacts to find algorithms, keys, certificates, libraries and HSM references. It assesses classical and quantum risk, recommends safer or post-quantum alternatives, and exports a JSON CBOM.
 
 ## Features
 
@@ -38,16 +38,10 @@ Open `http://localhost:5173`.
 
 VS Code extension:
 
-```powershell
-cd vscode-extension
-npm install
-npm run compile
-```
-
-Open `vscode-extension` in VS Code and press `F5` to launch the Extension Development Host.
+Install **Periperi** from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=TheSIxBugs.periperi) for save-time diagnostics, workspace and artifact scanning, engine visibility and CBOM export.
 
 ## Demo
 
 Choose **run the built-in demo**, or upload a repository ZIP/TAR, Docker/OCI image archive, binary, certificate or key. Open any finding to inspect safe evidence and recommendations, then export the CBOM. The health endpoint reports the exact OpenSSL backend and whether Syft and Trivy are available.
 
-For complete container analysis, install `syft` and `trivy` on the backend host. ECDAT still safely extracts and scans image layers when either CLI is unavailable, and records each engine's status in the scan result.
+For complete container analysis, install `syft` and `trivy` on the backend host. Periperi still safely extracts and scans image layers when either CLI is unavailable, and records each engine's status in the scan result.

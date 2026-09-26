@@ -1,8 +1,8 @@
-name = "ecdat-api"
+name = "periperi-api"
 main = "src/index.ts"
 compatibility_date = "2025-01-01"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "ecdat"
+database_name = "periperi"
 database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"

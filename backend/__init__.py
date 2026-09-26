@@ -1,2 +1,2 @@
-"""ECDAT backend namespace."""
+"""Periperi backend namespace."""
 

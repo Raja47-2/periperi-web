@@ -145,7 +145,7 @@ export async function expandContainerLayers(
       expanded.push(
         ...contents.map((entry) => ({
           ...entry,
-          path: `ecdat_layers/layer-${String(index + 1).padStart(3, '0')}/${entry.path}`,
+          path: `periperi_layers/layer-${String(index + 1).padStart(3, '0')}/${entry.path}`,
         })),
       )
       layerCount += 1

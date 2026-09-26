@@ -113,7 +113,7 @@ def findings_from_trivy(payload: dict[str, Any], options: Any) -> list[dict[str,
 
 
 def scan_container_with_tools(archive: Path, options: Any) -> tuple[list[dict[str, Any]], dict[str, Any]]:
-    """Run installed Syft and Trivy CLIs and return normalized ECDAT findings."""
+    """Run installed Syft and Trivy CLIs and return normalized Periperi findings."""
     findings: list[dict[str, Any]] = []
     status: dict[str, Any] = container_tool_details()
 

@@ -1,6 +1,6 @@
 # demo-project
 
-A deliberately weak sample application used by the ECDAT web demo. It exists so the
+A deliberately weak sample application used by the Periperi web demo. It exists so the
 dashboard always has realistic findings to display. **Do not reuse any of this code
 in production.**
 

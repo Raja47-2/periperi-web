@@ -1,4 +1,4 @@
-// Deliberately weak examples for ECDAT extension testing.
+// Deliberately weak examples for Periperi extension testing.
 const crypto = require("crypto");
 
 function legacyId(value) {

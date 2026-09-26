@@ -1,4 +1,4 @@
-"""FastAPI entry point for the ECDAT prototype."""
+"""FastAPI entry point for the Periperi prototype."""
 
 from __future__ import annotations
 
@@ -25,7 +25,7 @@ ROOT = BACKEND_DIR.parent
 
 def _resolve_sample_project() -> Path:
     """Locate the bundled demo project across repo, container and VPS layouts."""
-    override = os.environ.get("ECDAT_SAMPLE_PROJECT", "").strip()
+    override = os.environ.get("PERIPERI_SAMPLE_PROJECT", "").strip()
     candidates = [Path(override)] if override else []
     candidates += [
         ROOT / "samples" / "demo-project",
@@ -48,7 +48,7 @@ async def lifespan(_: FastAPI):
     yield
 
 
-app = FastAPI(title="ECDAT API", version="1.0.0", lifespan=lifespan)
+app = FastAPI(title="Periperi API", version="1.0.0", lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -56,7 +56,7 @@ app.add_middleware(
         "http://127.0.0.1:5173",
         *[
             origin.strip()
-            for origin in os.environ.get("ECDAT_ALLOWED_ORIGINS", "").split(",")
+            for origin in os.environ.get("PERIPERI_ALLOWED_ORIGINS", "").split(",")
             if origin.strip()
         ],
     ],
@@ -94,7 +94,7 @@ async def scan_error_handler(_, exc: ScanError):
 def health() -> dict:
     return {
         "status": "ok",
-        "service": "ecdat",
+        "service": "periperi",
         "sample_project": {"path": str(SAMPLE_PROJECT), "available": SAMPLE_PROJECT.is_dir()},
         "engines": {"openssl": openssl_details(), **container_tool_details()},
     }
@@ -128,7 +128,7 @@ def create_sample_scan(
         raise HTTPException(
             503,
             "The bundled demo project is not available on this host. "
-            "Set ECDAT_SAMPLE_PROJECT to its directory, or upload a ZIP instead.",
+            "Set PERIPERI_SAMPLE_PROJECT to its directory, or upload a ZIP instead.",
         )
     return _complete_scan(scan_project(SAMPLE_PROJECT, _options(sensitivity, migration_complexity, threat_timeline)))
 

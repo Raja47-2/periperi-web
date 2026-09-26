@@ -6,6 +6,7 @@ import {
 } from 'lucide-react'
 
 const API = import.meta.env.VITE_API_BASE || '/api'
+const MARKETPLACE_URL = 'https://marketplace.visualstudio.com/items?itemName=TheSIxBugs.periperi'
 
 const RISK_ORDER = { critical: 0, high: 1, medium: 2, low: 3, info: 4 }
 const LABELS = {
@@ -82,7 +83,7 @@ function App() {
       setFilter('all')
       requestAnimationFrame(() => document.getElementById('results')?.scrollIntoView({ behavior: 'smooth' }))
     } catch (exception) {
-      setError(exception.message === 'Failed to fetch' ? 'The ECDAT backend is not reachable. Start the API and try again.' : exception.message)
+      setError(exception.message === 'Failed to fetch' ? 'The Periperi backend is not reachable. Start the API and try again.' : exception.message)
     } finally {
       setLoading(false)
     }
@@ -103,15 +104,16 @@ function App() {
   return (
     <div className="app-shell">
       <header className="topbar">
-        <a className="brand" href="#top" aria-label="ECDAT home">
+        <a className="brand" href="#top" aria-label="Periperi home">
           <span className="brand-mark"><Fingerprint size={20} /></span>
-          <span>ECDAT</span>
+          <span>Periperi</span>
           <span className="brand-tag">CRYPTOGRAPHIC INTELLIGENCE</span>
         </a>
         <nav className={mobileNav ? 'nav-links open' : 'nav-links'}>
           <a href="#scanner" onClick={() => setMobileNav(false)}>Scanner</a>
           <a href="#results" onClick={() => setMobileNav(false)}>Findings</a>
           <a href="#method" onClick={() => setMobileNav(false)}>Methodology</a>
+          <a href={MARKETPLACE_URL} target="_blank" rel="noopener noreferrer" onClick={() => setMobileNav(false)}>VS Code Extension</a>
         </nav>
         <button className="menu-button" onClick={() => setMobileNav(!mobileNav)} aria-label="Toggle menu">
           {mobileNav ? <X /> : <Menu />}
@@ -232,7 +234,7 @@ function App() {
         </section>
       </main>
 
-      <footer><div className="brand"><span className="brand-mark"><Fingerprint size={18} /></span><span>ECDAT</span></div><p>Enterprise Cryptographic Discovery & Analysis Tool</p><span>SIH 2026 · PS SIH26164</span></footer>
+      <footer><div className="brand"><span className="brand-mark"><Fingerprint size={18} /></span><span>Periperi</span></div><p>Enterprise Risk, Intelligence, Protection, Evaluation, Research &amp; Identification</p><a className="footer-link" href={MARKETPLACE_URL} target="_blank" rel="noopener noreferrer">Get the VS Code extension</a><span>The Six Bugs · SIH 2026 · PS SIH26164</span></footer>
       {selected && <FindingDrawer finding={selected} onClose={() => setSelected(null)} />}
     </div>
   )

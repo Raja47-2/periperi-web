@@ -34,7 +34,7 @@ def build_cbom(scan: dict[str, Any]) -> dict[str, Any]:
             item["name"] for item in findings if item["category"] == category
         })
     return {
-        "specification": "ECDAT CBOM Prototype 1.0",
+        "specification": "Periperi CBOM Prototype 1.0",
         "disclaimer": "Rule-based prototype inventory; validate findings before security decisions.",
         "scan_id": scan["id"],
         "project_name": scan["project_name"],

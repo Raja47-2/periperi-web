@@ -1,5 +1,5 @@
 /**
- * Safe in-memory ZIP/TAR extraction for ECDAT scans.
+ * Safe in-memory ZIP/TAR extraction for Periperi scans.
  *
  * Mirrors the prototype's limits and path-traversal guards, but operates on
  * in-memory entries because the Workers runtime has no filesystem.

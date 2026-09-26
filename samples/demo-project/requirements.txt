@@ -1,3 +1,3 @@
-# Deliberately outdated pins for the ECDAT demo. Never install in production.
+# Deliberately outdated pins for the Periperi demo. Never install in production.
 pycryptodome==3.9.9
 cryptography==41.0.7

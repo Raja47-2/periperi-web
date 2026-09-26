@@ -1,2 +1,2 @@
-"""ECDAT backend package."""
+"""Periperi backend package."""
 

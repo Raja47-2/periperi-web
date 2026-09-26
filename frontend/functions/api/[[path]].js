@@ -75,7 +75,7 @@ export async function onRequest({ request }) {
     const message =
       error && error.name === "TimeoutError"
         ? "The scan timed out. Try a smaller project or raise the timeout."
-        : "The ECDAT backend is unreachable.";
+        : "The Periperi backend is unreachable.";
     return Response.json({ detail: message }, { status: 502 });
   }
 }

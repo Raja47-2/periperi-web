@@ -1,4 +1,4 @@
-"""Deliberately weak examples for local ECDAT testing only."""
+"""Deliberately weak examples for local Periperi testing only."""
 
 import hashlib
 from Crypto.Cipher import AES, DES

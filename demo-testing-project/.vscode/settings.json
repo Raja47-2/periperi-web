@@ -1,7 +1,7 @@
 {
-  "ecdat.scanOnSave": true,
-  "ecdat.dataSensitivity": "pii",
-  "ecdat.migrationComplexity": "standard_application",
-  "ecdat.threatTimeline": 15,
-  "ecdat.maxWorkspaceFiles": 500
+  "periperi.scanOnSave": true,
+  "periperi.dataSensitivity": "pii",
+  "periperi.migrationComplexity": "standard_application",
+  "periperi.threatTimeline": 15,
+  "periperi.maxWorkspaceFiles": 500
 }

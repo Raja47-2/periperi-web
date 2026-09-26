@@ -1,5 +1,5 @@
 /**
- * ECDAT API on Cloudflare Workers.
+ * Periperi API on Cloudflare Workers.
  *
  * Mirrors the FastAPI prototype's routes and response shapes. Capabilities the
  * Workers runtime cannot provide (native OpenSSL parsing, Syft/Trivy) are
@@ -65,7 +65,7 @@ function completeScan(result: Record<string, unknown>): Record<string, unknown> 
 }
 
 async function handleHealth(env: Env, request: Request): Promise<Response> {
-  return json({ status: 'ok', service: 'ecdat', engines: engineStatus() }, 200, env, request)
+  return json({ status: 'ok', service: 'periperi', engines: engineStatus() }, 200, env, request)
 }
 
 async function handleListScans(env: Env, request: Request): Promise<Response> {

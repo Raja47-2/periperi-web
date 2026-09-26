@@ -86,7 +86,7 @@ def test_openssl_backend_parses_real_key_and_certificate(tmp_path):
         serialization.PrivateFormat.PKCS8,
         serialization.NoEncryption(),
     ))
-    name = x509.Name([x509.NameAttribute(NameOID.COMMON_NAME, "ecdat.test")])
+    name = x509.Name([x509.NameAttribute(NameOID.COMMON_NAME, "periperi.test")])
     now = datetime.now(timezone.utc)
     certificate = (
         x509.CertificateBuilder()
