@@ -5,7 +5,7 @@ import {
   Menu, Radar, Search, ShieldCheck, Sparkles, UploadCloud, X,
 } from 'lucide-react'
 
-const API = '/api'
+const API = import.meta.env.VITE_API_BASE || '/api'
 
 const RISK_ORDER = { critical: 0, high: 1, medium: 2, low: 3, info: 4 }
 const LABELS = {
